@@ -36,3 +36,5 @@ def serialize_factor(book: Book, method_type: str) -> str:
     elif method_type == "xml":
         serializer = XMLBookSerializer()
         return serializer.serialize(book)
+    else:
+        raise ValueError(f"Unknown serialize type: {method_type}")

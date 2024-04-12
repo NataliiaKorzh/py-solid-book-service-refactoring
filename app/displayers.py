@@ -29,3 +29,5 @@ def display_factor(book: Book, method_type: str) -> None:
     elif method_type == "reverse":
         displayer = ReverseDisplayer()
         return displayer.display(book)
+    else:
+        raise ValueError(f"Unknown display type: {method_type}")

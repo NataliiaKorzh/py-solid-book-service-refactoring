@@ -31,3 +31,5 @@ def print_factor(book: Book, method_type: str) -> None:
     elif method_type == "reverse":
         printer = ReversePrinter()
         return printer.print(book)
+    else:
+        raise ValueError(f"Unknown print type: {method_type}")
