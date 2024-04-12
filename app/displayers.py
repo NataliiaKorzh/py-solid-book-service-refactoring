@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.main import Book
+from app.book import Book
 
 
 class Displayer(ABC):
@@ -20,3 +20,12 @@ class ReverseDisplayer(Displayer):
 
     def display(self, book: Book) -> None:
         print(book.content[::-1])
+
+
+def display_factor(book: Book, method_type: str) -> None:
+    if method_type == "console":
+        displayer = ConsoleDisplayer()
+        return displayer.display(book)
+    elif method_type == "reverse":
+        displayer = ReverseDisplayer()
+        return displayer.display(book)

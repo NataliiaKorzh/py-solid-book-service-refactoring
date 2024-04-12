@@ -2,7 +2,7 @@ import json
 import xml.etree.ElementTree as ElementTree
 from abc import ABC, abstractmethod
 
-from app.main import Book
+from app.book import Book
 
 
 class BookSerializer(ABC):
@@ -27,3 +27,12 @@ class XMLBookSerializer(BookSerializer):
         content = ElementTree.SubElement(root, "content")
         content.text = book.content
         return ElementTree.tostring(root, encoding="unicode")
+
+
+def serialize_factor(book: Book, method_type: str) -> str:
+    if method_type == "json":
+        serializer = JSONBookSerializer()
+        return serializer.serialize(book)
+    elif method_type == "xml":
+        serializer = XMLBookSerializer()
+        return serializer.serialize(book)
